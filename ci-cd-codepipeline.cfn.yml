@@ -31,7 +31,7 @@ Parameters:
   GitHubToken:
     Type: String
     NoEcho: true
-    Description: github token here
+    Description: github token
     MinLength: 3
     MaxLength: 100
     ConstraintDescription: You must enter a GitHub personal access token
@@ -286,7 +286,7 @@ Resources:
                   - s3:GetObject
                   - s3:PutObject
                   - s3:GetObjectVersion
-              - Resource: !Sub arn:aws:ecr:us-east-2:${AWS::AccountId}:repository/${EcrDockerRepository}
+              - Resource: !Sub arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${EcrDockerRepository}
                 Effect: Allow
                 Action:
                   - ecr:GetDownloadUrlForLayer
@@ -310,7 +310,7 @@ Resources:
         Image: !Ref CodeBuildDockerImage
         EnvironmentVariables:
           - Name: REPOSITORY_URI
-            Value: !Sub ${AWS::AccountId}.dkr.ecr.us-east-2.amazonaws.com/${EcrDockerRepository}
+            Value: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrDockerRepository}
           - Name: REPOSITORY_NAME
             Value: !Ref GitSourceRepo
           - Name: REPOSITORY_BRANCH
