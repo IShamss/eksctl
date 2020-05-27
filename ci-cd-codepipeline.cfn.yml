@@ -6,8 +6,8 @@ Description: EKSWSV1
 Parameters:
   EksClusterName:
     Type: String
-    Description: jwt-api-test
-    Default: jwt-api-test
+    Description: simple-jwt-api
+    Default: simple-jwt-api
     MinLength: 1
     MaxLength: 100
     ConstraintDescription: You must enter the EKS cluster name
