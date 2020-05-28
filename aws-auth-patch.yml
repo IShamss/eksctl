@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::459667432663:role/eksctl-simple-jwt-api-nodegroup-n-NodeInstanceRole-1IJGEOD5JYWLX
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    []
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2020-05-28T17:17:13Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "835"
+  selfLink: /api/v1/namespaces/kube-system/configmaps/aws-auth
+  uid: c83d93b5-6a1a-4fd3-aeb3-031f99a50451
